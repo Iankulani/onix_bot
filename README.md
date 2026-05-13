@@ -40,12 +40,14 @@ onixn bot
 ```bash
 git clone https://github.com/iankarl/onix-bot.git
 cd onix-bot
+```
+        
 chmod +x install.sh
 ./install.sh
 
 
 
-Windows
+# Windows
 ```bash
 git clone https://github.com/Iankulani/onix_bot.git
 cd onix-bot
@@ -94,28 +96,7 @@ ssh_add <name> <host> <user>	Add SSH connection
 traffic icmp <target> <count>	Traffic generation
 ````
 
-# 🔧 Configuration
-Edit config.json or use environment variables:
 
-json
-{
-    "web_port": 5000,
-    "phish_port": 8080,
-    "auto_start_web": true,
-    "encryption_enabled": true
-}
-📁 Directory Structure
-text
-onix-bot/
-├── onix_bot.py          # Main application
-├── requirements.txt     # Python dependencies
-├── .onix/              # Configuration and database
-│   ├── phishing/       # Phishing templates
-│   ├── captured/       # Captured credentials
-│   └── onix.db         # SQLite database
-├── reports/            # Generated reports
-└── logs/              # Application logs
-🔐 Security Notes
 Use only on authorized systems
 
 Encrypt sensitive data with cryptography
@@ -124,24 +105,26 @@ Regular security updates recommended
 
 Keep API keys secure
 
-📊 API Documentation
+# 📊 API Documentation
 Authentication
-bash
-# Create API key
-api_create my_key read,write
 
+# Create API key
+```bash
+api_create my_key read,write
+```
 # Use API key
 ```bash      
 curl -H "X-API-Key: your-key" http://localhost:5000/api/command
 ```
 
-Endpoints
+# Endpoints
+```bash
 POST /api/command - Execute command
 
 GET /api/stats - Get statistics
 
 GET /api/threats - List threats
-
+```
 # 🐛 Troubleshooting
 Common Issues
 Module not found:

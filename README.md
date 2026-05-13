@@ -2,7 +2,7 @@
 
 <img width="800" height="500" alt="onix" src="https://github.com/user-attachments/assets/0741c4d8-387a-47d7-82b4-c05b4a35a24f" />
 
-onixn bot
+Onix Bot is a multi-platform command execution tool that enables users to fire commands seamlessly via Telegram, Discord, Signal, WhatsApp, iMessage, and a web app. Designed for educational and research purposes only, Onix Bot serves as a controlled environment for understanding command-and-control mechanics across diverse messaging ecosystems. It supports white hat, black hat, and all hacker types—allowing defenders to simulate threats, researchers to analyze attack patterns, and ethical testers to harden systems. Users must operate within legal boundaries. Onix Bot bridges communication layers and remote execution, offering hands-on insight into modern security challenges. Always use responsibly and with explicit authorization.
 
 
 

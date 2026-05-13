@@ -1,0 +1,54 @@
+# ONIX-BOT Alpine Docker Image (Minimal)
+FROM alpine:3.18
+
+# Install dependencies
+RUN apk add --no-cache \
+    python3 \
+    py3-pip \
+    python3-dev \
+    gcc \
+    musl-dev \
+    libpcap-dev \
+    nmap \
+    whois \
+    net-tools \
+    iputils \
+    bind-tools \
+    tcpdump \
+    chromium \
+    chromium-chromedriver \
+    git \
+    curl \
+    && pip3 install --upgrade pip
+
+# Create application directory
+WORKDIR /app
+
+# Copy requirements and install Python packages
+COPY requirements.txt .
+RUN pip3 install --no-cache-dir -r requirements.txt || \
+    pip3 install --no-cache-dir --break-system-packages -r requirements.txt
+
+# Copy application files
+COPY . .
+
+# Create non-root user
+RUN adduser -D -h /app onix && \
+    chown -R onix:onix /app
+
+# Create necessary directories
+RUN mkdir -p /app/.onix/phishing /app/.onix/captured /app/reports && \
+    chown -R onix:onix /app/.onix /app/reports
+
+# Switch to non-root user
+USER onix
+
+# Expose ports
+EXPOSE 5000 8080
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:5000/ || exit 1
+
+# Run
+CMD ["python3", "onix_bot.py"]

@@ -1,0 +1,13 @@
+onix-bot/
+├── requirements.txt
+├── requirements-full.txt
+├── Dockerfile
+├── Dockerfile.alpine
+├── .gitlab-ci.yml
+├── install.sh
+├── install.bat
+├── setup.py
+├── docker-compose.yml
+├── .env.example
+├── .gitignore
+└── README.md

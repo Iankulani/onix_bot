@@ -1,0 +1,117 @@
+version: '3.8'
+
+services:
+  onix-bot:
+    build: .
+    container_name: onix-bot
+    restart: unless-stopped
+    ports:
+      - "5000:5000"  # Web UI
+      - "8080:8080"  # Phishing server
+    volumes:
+      - ./onix-data:/app/.onix
+      - ./reports:/app/reports
+      - ./logs:/app/logs
+    environment:
+      - PYTHONUNBUFFERED=1
+      - ONIX_ENV=production
+      - ONIX_WEB_PORT=5000
+      - ONIX_PHISH_PORT=8080
+    networks:
+      - onix-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  onix-bot-alpine:
+    build:
+      context: .
+      dockerfile: Dockerfile.alpine
+    container_name: onix-bot-alpine
+    restart: unless-stopped
+    ports:
+      - "5001:5000"
+      - "8081:8080"
+    volumes:
+      - ./onix-data:/app/.onix
+      - ./reports:/app/reports
+    environment:
+      - PYTHONUNBUFFERED=1
+      - ONIX_ENV=production
+    networks:
+      - onix-network
+
+  # Optional: Redis for session management
+  redis:
+    image: redis:7-alpine
+    container_name: onix-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - onix-network
+    command: redis-server --appendonly yes
+
+  # Optional: PostgreSQL for advanced logging
+  postgres:
+    image: postgres:15-alpine
+    container_name: onix-postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=onix
+      - POSTGRES_PASSWORD=onix_secure_password
+      - POSTGRES_DB=onix
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - onix-network
+    ports:
+      - "5432:5432"
+
+  # Optional: Prometheus for metrics
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: onix-prometheus
+    restart: unless-stopped
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
+    ports:
+      - "9090:9090"
+    networks:
+      - onix-network
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+
+  # Optional: Grafana for dashboards
+  grafana:
+    image: grafana/grafana:latest
+    container_name: onix-grafana
+    restart: unless-stopped
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_INSTALL_PLUGINS=grafana-piechart-panel
+    volumes:
+      - grafana-data:/var/lib/grafana
+    ports:
+      - "3000:3000"
+    networks:
+      - onix-network
+    depends_on:
+      - prometheus
+
+networks:
+  onix-network:
+    driver: bridge
+
+volumes:
+  redis-data:
+  postgres-data:
+  prometheus-data:
+  grafana-data:

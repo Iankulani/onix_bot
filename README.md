@@ -3,12 +3,15 @@
 <img width="800" height="500" alt="onix" src="https://github.com/user-attachments/assets/0741c4d8-387a-47d7-82b4-c05b4a35a24f" />
 
 
-
-
-[![License](https://img.shields.io/badge/License-Proprietary-red.svg)](LICENSE)
-[![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)](https://python.org)
-[![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://docker.com)
-[![Security](https://img.shields.io/badge/Security-Audited-green.svg)](SECURITY.md)
+[![GitHub stars](https://img.shields.io/github/stars/Iankulani/wren_bot?style=for-the-badge&logo=github)](https://github.com/Iankulani/wren_bot/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/Iankulani/wren_bot?style=for-the-badge&logo=github)](https://github.com/Iankulani/wren_bot/network)
+[![GitHub watchers](https://img.shields.io/github/watchers/Iankulani/wren_bot?style=for-the-badge&logo=github)](https://github.com/Iankulani/wren_bot/watchers)
+[![GitHub contributors](https://img.shields.io/github/contributors/Iankulani/wren_bot?style=for-the-badge&logo=github)](https://github.com/Iankulani/wren_bot/graphs/contributors)
+[![GitHub last commit](https://img.shields.io/github/last-commit/Iankulani/wren_bot?style=for-the-badge&logo=git)](https://github.com/Iankulani/wren_bot/commits/main)
+[![Docker Pulls](https://img.shields.io/badge/docker-available-blue?style=for-the-badge&logo=docker&logoColor=white)](https://hub.docker.com/r/iankulaniking_phisher)
+[![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)](LICENSE)
+[![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20Windows-blue?style=for-the-badge&logo=linux&logoColor=white)](https://github.com/Iankulani/wren_bot)
+[![Python](https://img.shields.io/badge/python-3.8+-blue?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 
 Onix Bot is a multi-platform command execution tool that enables users to fire commands seamlessly via Telegram, Discord, Signal, WhatsApp, iMessage, and a web app. Designed for educational and research purposes only, Onix Bot serves as a controlled environment for understanding command-and-control mechanics across diverse messaging ecosystems. It supports white hat, black hat, and all hacker types—allowing defenders to simulate threats, researchers to analyze attack patterns, and ethical testers to harden systems. Users must operate within legal boundaries. Onix Bot bridges communication layers and remote execution, offering hands-on insight into modern security challenges. Always use responsibly and with explicit authorization.
 

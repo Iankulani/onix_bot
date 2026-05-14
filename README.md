@@ -149,5 +149,10 @@ Ian Carter Kulani
 
 GitHub: Iankulani
 
-⚠️ Disclaimer
+# ⚠️ Disclaimer
 This tool is for educational and authorized testing purposes only. Users are responsible for complying with all applicable laws.
+
+
+# Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Iankulani/onix_bot&type=Date)](https://star-history.com/#Iankulani/onix_bot&Date)
